@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STOCKLINE | JSE dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">JSE / MARKET WATCH</p>
+        <h1>STOCKLINE</h1>
+        <p class="subtitle">A clear view of the shares you are watching.</p>
+      </div>
+      <div class="notice" role="note">
+        <strong>Demo data, not live market prices</strong>
+        <span id="dataset-date">Dataset date: loading...</span>
+      </div>
+    </header>
+
+    <section class="toolbar" aria-label="Share controls">
+      <label for="search">Find a share</label>
+      <input id="search" type="search" placeholder="Search ticker or company name" autocomplete="off">
+    </section>
+
+    <p id="loading" class="status" role="status">Loading shares...</p>
+    <p id="error" class="status error" role="alert" hidden>Unable to load shares. Please try again.</p>
+    <p id="empty" class="status" hidden>No matching shares.</p>
+
+    <section class="table-wrap" aria-label="Supported shares">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Share</th>
+            <th scope="col">Latest close</th>
+            <th scope="col">Change</th>
+            <th scope="col">Watchlist</th>
+          </tr>
+        </thead>
+        <tbody id="stocks"></tbody>
+      </table>
+    </section>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
