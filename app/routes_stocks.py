@@ -3,6 +3,7 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, Path, Query
 
 from app.providers import DemoPriceProvider
+from app.explanations import build_explanation
 from app.schemas import StockAnalysis, StockQuote
 from app.scoring import score_prices
 
@@ -81,10 +82,13 @@ def analyze_stock(
     history = provider.get_history(quote.ticker)
     assert history is not None
     result = score_prices([float(point["close"]) for point in history])
+    explanation = build_explanation(result)
     return StockAnalysis(
         **quote.model_dump(),
         score=result.get("score"),
         label=result.get("label"),
         breakdown=result.get("breakdown"),
         message=result.get("message"),
+        explanation=explanation,
+        source="rule-based" if explanation is not None else None,
     )

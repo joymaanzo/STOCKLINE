@@ -23,6 +23,8 @@ class StockAnalysis(BaseModel):
     label: str | None = None
     breakdown: dict[str, Any] | None = None
     message: str | None = None
+    explanation: str | None = None
+    source: str | None = None
 
 
 class WatchlistCreate(BaseModel):
