@@ -71,3 +71,40 @@ tbody span { color: var(--muted); font: 13px Arial, sans-serif; }
   input { width: 100%; }
   th, td { padding: 14px 12px; }
 }
+
+.detail-shell { max-width: 1080px; }
+.detail-nav { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 36px; font: 700 12px Arial, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+.detail-nav a { color: var(--accent); text-decoration: none; }
+.detail-header { display: flex; justify-content: space-between; gap: 28px; padding-bottom: 30px; border-bottom: 3px solid var(--ink); }
+.detail-header h1 { font-size: clamp(44px, 9vw, 92px); }
+.quote-strip { display: flex; align-items: end; gap: 36px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.quote-strip div { display: grid; gap: 4px; }
+.quote-strip span, .detail-panel dt, .quote-strip + * span { color: var(--muted); font: 12px Arial, sans-serif; text-transform: uppercase; }
+.quote-strip strong { font: 700 28px Arial, sans-serif; }
+.quote-strip .watch-button { margin-left: auto; }
+.detail-section { padding: 32px 0; border-bottom: 1px solid var(--line); }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; }
+h2 { margin: 0 0 18px; font: 700 20px Arial, sans-serif; }
+.section-heading h2 { margin: 0; }
+.section-heading span { color: var(--muted); font: 13px Arial, sans-serif; }
+.chart { width: 100%; color: var(--accent); }
+.chart svg { display: block; width: 100%; height: auto; min-height: 180px; }
+.detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding: 32px 0; border-bottom: 1px solid var(--line); }
+.detail-panel { padding: 22px; background: var(--card); border: 1px solid var(--line); }
+dl { margin: 0; }
+dl > div { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+dl > div:last-child { border-bottom: 0; }
+dt { color: var(--muted); }
+dd { margin: 0; font: 700 15px Arial, sans-serif; text-align: right; }
+.score-line { display: flex; align-items: baseline; gap: 12px; margin: 0 0 14px; }
+.score-line strong { font: 700 42px Arial, sans-serif; }
+.score-line span { color: var(--accent); font: 700 15px Arial, sans-serif; }
+.explanation-panel p { max-width: 760px; margin: 0; font-size: 19px; }
+
+@media (max-width: 680px) {
+  .detail-header { display: block; }
+  .detail-header .notice { margin-top: 24px; }
+  .quote-strip { align-items: start; flex-wrap: wrap; gap: 20px; }
+  .quote-strip .watch-button { width: 100%; margin-left: 0; }
+  .detail-grid { grid-template-columns: 1fr; }
+}

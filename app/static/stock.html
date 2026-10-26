@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STOCKLINE | Share detail</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell detail-shell">
+    <nav class="detail-nav"><a href="/">&larr; Dashboard</a><span>JSE / SHARE DETAIL</span></nav>
+    <p id="not-found" class="status error" hidden>Share not found</p>
+    <section id="detail" hidden>
+      <header class="detail-header">
+        <div>
+          <p class="eyebrow">JSE / ANALYSIS</p>
+          <h1 id="ticker-title">__TICKER__</h1>
+          <p id="company-name" class="subtitle"></p>
+        </div>
+        <div class="notice" role="note">
+          <strong>Demo data, not live market prices</strong>
+          <span id="quote-date"></span>
+        </div>
+      </header>
+
+      <p id="loading" class="status">Loading share...</p>
+      <p id="error" class="status error" hidden>Unable to load this share. Please try again.</p>
+
+      <section class="quote-strip" aria-label="Current quote">
+        <div><span>Latest close</span><strong id="latest-close"></strong></div>
+        <div><span>Daily change</span><strong id="daily-change"></strong></div>
+        <button id="watch-button" class="watch-button" type="button"></button>
+      </section>
+
+      <section class="detail-section">
+        <div class="section-heading"><h2>60-day price history</h2><span id="chart-range"></span></div>
+        <div id="chart" class="chart" aria-label="60-day price line chart"></div>
+      </section>
+
+      <section class="detail-grid">
+        <article class="detail-panel">
+          <h2>Indicators</h2>
+          <dl>
+            <div><dt>5-day SMA</dt><dd id="sma5"></dd></div>
+            <div><dt>20-day SMA</dt><dd id="sma20"></dd></div>
+            <div><dt>20-day momentum</dt><dd id="momentum"></dd></div>
+            <div><dt>SMA trend</dt><dd id="trend"></dd></div>
+          </dl>
+        </article>
+        <article class="detail-panel">
+          <h2>Opportunity score</h2>
+          <p class="score-line"><strong id="score"></strong><span id="label"></span></p>
+          <dl id="breakdown"></dl>
+        </article>
+      </section>
+
+      <section class="detail-section explanation-panel">
+        <div class="section-heading"><h2>Rule-based explanation</h2><span id="source"></span></div>
+        <p id="explanation"></p>
+      </section>
+    </section>
+  </main>
+  <script>window.STOCK_TICKER = "__TICKER__"; window.STOCK_HISTORY = __HISTORY__;</script>
+  <script src="/stock.js" defer></script>
+</body>
+</html>
