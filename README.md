@@ -16,6 +16,8 @@ docker compose up --build
 
 Open http://localhost:8000.
 
+docker compose up --build starts the app and Postgres. In GitHub Codespaces, container-to-container traffic timed out (the app could not reach postgres:5432), so the app and Postgres were verified by publishing the Postgres port and running the app on the host: 25 tests passed against Postgres, /health returned {"status":"ok"}, and the watchlist_items table was created. Compose has not been verified end to end in Codespaces.
+
 ## Project
 
 STOCKLINE is a JSE stock tracker for beginner investors and students. It helps users browse South African shares, inspect price movements, review a deterministic opportunity score, and manage a watchlist. It is an analysis and tracking tool, not a broker, and it does not execute trades.
