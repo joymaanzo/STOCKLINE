@@ -1,6 +1,6 @@
 from typing import Any
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class StockQuote(BaseModel):
@@ -23,3 +23,11 @@ class StockAnalysis(BaseModel):
     label: str | None = None
     breakdown: dict[str, Any] | None = None
     message: str | None = None
+
+
+class WatchlistCreate(BaseModel):
+    ticker: str = Field(min_length=1, max_length=10, pattern=r"^[A-Za-z0-9]+$")
+
+
+class WatchlistItemResponse(BaseModel):
+    ticker: str
