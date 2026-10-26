@@ -15,3 +15,33 @@ docker compose up --build
 ```
 
 Open http://localhost:8000.
+
+## Project
+
+STOCKLINE is a JSE stock tracker for beginner investors and students. It helps users browse South African shares, inspect price movements, review a deterministic opportunity score, and manage a watchlist. It is an analysis and tracking tool, not a broker, and it does not execute trades.
+
+The application currently uses labelled deterministic demo prices. Demo data is not live market data and must not be treated as investment advice.
+
+## Tests
+
+```bash
+python -m pytest -q
+```
+
+## Render deployment
+
+The Render Blueprint uses the Dockerfile and requires the `DATABASE_URL` environment variable to be configured in Render. No secret values are committed.
+
+Deployed URL: `https://stockline.onrender.com`
+
+The Render free tier may sleep when idle, so the first request after inactivity can be slower or unavailable while the service wakes.
+
+## Known limitations
+
+The MVP implementation plan in `docs/mvp-spec.md` section 10 identifies work that is not complete in this release:
+
+- Database migrations, provider research, caching, freshness handling, and provider fallbacks are not fully implemented.
+- User accounts, authentication, and cross-user watchlist ownership are not implemented.
+- Price alerts, scheduled polling, crossing detection, and email delivery are not implemented.
+- AI explanations, fundamentals, structured risk prompts, and provider fallbacks are not implemented; analysis uses fixed rule-based text.
+- Browser journey coverage, JSON logging, metrics beyond the health endpoint, and deployment smoke tests are limited.
