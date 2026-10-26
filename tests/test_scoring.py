@@ -39,9 +39,13 @@ def test_fewer_than_twenty_points_has_no_numeric_score() -> None:
     assert "score" not in result
 
 
-# Hand calc: flat=[SMA=100, momentum=0%, trend=0%] => 50.0 => Watch; down=[SMA=99.5,
-# momentum=-10%, trend=(98-99.5)/99.5*100=-1.51%] => 9.4 => Weak; up=[SMA=100.5,
-# momentum=10%, trend=(102-100.5)/100.5*100=1.49%] => 90.4 => Strong.
+# Normalisation: component=max(0.0, min(100.0, 50.0 + percent_change * 5.0)).
+# Flat: SMA=100, position=(100-100)/100*100=0%; components=(50, 50, 50);
+# total=0.40*50 + 0.40*50 + 0.20*50=50.0 => Watch.
+# Down: SMA=99.5, position=(90-99.5)/99.5*100=-9.55%; components=(0, 2.26, 42.46);
+# total=0.40*0 + 0.40*2.26 + 0.20*42.46=9.4 => Weak.
+# Up: SMA=100.5, position=(110-100.5)/100.5*100=9.45%; components=(100, 97.26, 57.46);
+# total=0.40*100 + 0.40*97.26 + 0.20*57.46=90.4 => Strong.
 def test_score_labels_cover_documented_thresholds() -> None:
     assert score_prices([100] * 20)["label"] == "Watch"
     assert score_prices([100] * 19 + [90])["label"] == "Weak indicators"
