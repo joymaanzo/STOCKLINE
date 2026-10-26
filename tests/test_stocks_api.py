@@ -47,6 +47,8 @@ def test_stock_analysis_returns_score_label_breakdown_and_metadata() -> None:
     assert analysis["data_date"] == "2025-03-01"
     assert analysis["demo_data"] is True
     assert analysis["message"] is None
+    assert analysis["sma5"] == 157.0
+    assert analysis["sma20"] == 149.5
 
 
 def test_invalid_stock_inputs_return_unprocessable_entity() -> None:

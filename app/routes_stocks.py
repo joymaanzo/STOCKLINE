@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException, Path, Query
 
 from app.providers import DemoPriceProvider
 from app.explanations import build_explanation
+from app.indicators import simple_moving_average
 from app.schemas import StockAnalysis, StockQuote
 from app.scoring import score_prices
 
@@ -81,7 +82,8 @@ def analyze_stock(
     quote = _quote(ticker)
     history = provider.get_history(quote.ticker)
     assert history is not None
-    result = score_prices([float(point["close"]) for point in history])
+    closes = [float(point["close"]) for point in history]
+    result = score_prices(closes)
     explanation = build_explanation(result)
     return StockAnalysis(
         **quote.model_dump(),
@@ -91,4 +93,6 @@ def analyze_stock(
         message=result.get("message"),
         explanation=explanation,
         source="rule-based" if explanation is not None else None,
+        sma5=simple_moving_average(closes, 5),
+        sma20=simple_moving_average(closes, 20),
     )

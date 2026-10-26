@@ -25,6 +25,8 @@ class StockAnalysis(BaseModel):
     message: str | None = None
     explanation: str | None = None
     source: str | None = None
+    sma5: float | None = None
+    sma20: float | None = None
 
 
 class WatchlistCreate(BaseModel):

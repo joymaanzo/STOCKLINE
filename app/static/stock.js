@@ -75,14 +75,12 @@ async function loadDetail() {
     const quote = await quoteResponse.json();
     const analysis = await analysisResponse.json();
     const breakdown = analysis.breakdown;
-    const sma20 = quote.latest_close / (1 + breakdown.position_vs_sma / 100);
-    const sma5 = sma20 * (1 + breakdown.sma_trend / 100);
     document.querySelector("#company-name").textContent = quote.name;
     document.querySelector("#quote-date").textContent = `Dataset date: ${quote.data_date}`;
     document.querySelector("#latest-close").textContent = formatNumber(quote.latest_close);
     document.querySelector("#daily-change").textContent = `${formatSigned(quote.daily_change)} (${formatSigned(quote.daily_change_percent, "%")})`;
-    document.querySelector("#sma5").textContent = formatNumber(sma5);
-    document.querySelector("#sma20").textContent = formatNumber(sma20);
+    document.querySelector("#sma5").textContent = formatNumber(analysis.sma5);
+    document.querySelector("#sma20").textContent = formatNumber(analysis.sma20);
     document.querySelector("#momentum").textContent = formatSigned(breakdown.momentum, "%");
     document.querySelector("#trend").textContent = formatSigned(breakdown.sma_trend, "%");
     document.querySelector("#score").textContent = formatNumber(analysis.score);
