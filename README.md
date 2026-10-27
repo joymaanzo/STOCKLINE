@@ -36,7 +36,7 @@ The Render Blueprint uses the Dockerfile and requires the `DATABASE_URL` environ
 
 Deployed URL: `https://stockline-cx3t.onrender.com`
 
-The deployed app uses a Render Postgres database via the `DATABASE_URL` environment variable (not committed to the repo), and a watchlist entry was verified to persist across a redeploy.
+The deployed app uses a Render Postgres database, configured through the `DATABASE_URL` environment variable set in the Render dashboard (the value is not stored in the repo), and a watchlist entry was verified to persist across a redeploy.
 
 The Render free tier may sleep when idle, so the first request after inactivity can be slower or unavailable while the service wakes.
 
@@ -49,4 +49,4 @@ The MVP implementation plan in `docs/mvp-spec.md` section 10 identifies work tha
 - Price alerts, scheduled polling, crossing detection, and email delivery are not implemented.
 - AI explanations, fundamentals, structured risk prompts, and provider fallbacks are not implemented; analysis uses fixed rule-based text.
 - Browser journey coverage, JSON logging, metrics beyond the health endpoint, and deployment smoke tests are limited.
-- Hosted on Render's free tier, so the first request after idle can take about 50 seconds, and the free Postgres database expires after a limited period.
+- Hosted on Render's free tier, so the first request after idle can take about 50 seconds, and the free Postgres database expires on 25 November 2026.
