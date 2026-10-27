@@ -49,4 +49,4 @@ The MVP implementation plan in `docs/mvp-spec.md` section 10 identifies work tha
 - Price alerts, scheduled polling, crossing detection, and email delivery are not implemented.
 - AI explanations, fundamentals, structured risk prompts, and provider fallbacks are not implemented; analysis uses fixed rule-based text.
 - Browser journey coverage, JSON logging, metrics beyond the health endpoint, and deployment smoke tests are limited.
-- Hosted on Render's free tier, so the first request after idle can take about 50 seconds, and the free Postgres database expires on 25 November 2026.
+- Hosted on Render's free tier, so the first request after idle can take about 50 seconds, and the free Postgres database expires on 25 November 2026.- Hosted on Render's free tier, so the first request after idle can take about 50 seconds, and the free Postgres database expires on 25 November 2026.
